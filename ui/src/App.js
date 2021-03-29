@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Login from './Login';
-import Posts from './Posts';
+import Login from './components/login.component';
+import PostsList from './components/posts-list.component';
+import PostsAdd from './components/posts-add.component';
 
 function App() {
   var [token, setToken] = useState();
@@ -23,9 +24,8 @@ function App() {
       </header>
       <BrowserRouter>
         <Switch>
-          <Route path="/posts">
-            <Posts />
-          </Route>
+          <Route path="/posts" component={PostsList}/>
+          <Route path="/add-post" component={PostsAdd}/>
         </Switch>
       </BrowserRouter>
     </div>

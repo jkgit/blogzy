@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
+
   def authenticate
     auth_header = request.headers['Authorization']
     begin

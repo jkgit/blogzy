@@ -56,8 +56,11 @@ Now install the front-end by cd'ing into the ui folder of the blogzy repo and ex
 
 ~~~
 > npm install
-> yarn start
+> npm start
 ~~~
 
-Yarn should start a new browser window with the Blogzy application running in it.  The React app uses port 3000 and the rails app uses 3001.
+A new browser window shoud open with the Blogzy application running in it, if not open a new tab and go to http://localhost:3000.  
+The React app uses port 3000 and the rails app uses 3001.
+
+If the dependency gods are smiling on you, you should now have a running Blogzy app.  Enjoy!
 

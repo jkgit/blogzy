@@ -28,6 +28,13 @@ To install the backend, git clone the repo, cd into the repo, and execute the fo
 > docker-compose up
 ~~~
 
+optionally run tests
+
+~~~
+> docker-compose -f docker-compose-dev.yml run --rm web bundle exec rake test:models
+> docker-compose -f docker-compose-dev.yml run --rm web bundle exec rake test:controllers
+~~~
+
 At this point, you should be able to execute
 
 ~~~

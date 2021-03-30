@@ -32,15 +32,16 @@ To install the backend, git clone the repo, cd into the repo, and execute the fo
 
 ~~~
 > docker-compose -f docker-compose.yml build
-> docker-compose -f docker-compose.yml run --rm web bundle exec web rake db:refresh
+> docker-compose run web rake db:create
+> docker-compose run web rake db:migrate
 > docker-compose up
 ~~~
 
 optionally run tests
 
 ~~~
-> docker-compose -f docker-compose.yml run --rm web bundle exec rake test:models
-> docker-compose -f docker-compose.yml run --rm web bundle exec rake test:controllers
+> docker-compose run web rake test:models
+> docker-compose run web rake test:controllers
 ~~~
 
 At this point, you should be able to execute
@@ -49,12 +50,12 @@ At this point, you should be able to execute
 > curl "http://localhost:3001/posts"
 ~~~
 
-and receive an empty response.
+and receive a 401 response.
 
 Now install the front-end by cd'ing into the ui folder of the blogzy repo and execute :
 
 ~~~
-> npm build
+> npm install
 > yarn start
 ~~~
 

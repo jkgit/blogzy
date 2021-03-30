@@ -110,7 +110,6 @@ export default class PostsDetail extends Component {
          <div>
          {currentPost.user.email == localStorage.getItem("email") ? (
            <div className="edit-form">
-           <h4>Post</h4>
            <form>
              <div className="form-group">
              <label htmlFor="title">Title</label>
@@ -160,11 +159,11 @@ export default class PostsDetail extends Component {
            <p>{this.state.message}</p>
            </div>
          ) : (
-           <div className="view-post">
+           <div class="container text-left">
              <h4>{currentPost.title}</h4>
-             <h5>{currentPost.description}</h5>
-             <p>{currentPost.user.email}</p>
-             <p>{currentPost.body}</p>
+             <p class="lead">{currentPost.description}</p>
+             <p class="body">{currentPost.body}</p>
+             <p>{currentPost.user.email} {currentPost.created_at}</p>
            </div>
          )}
          </div>

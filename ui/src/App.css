@@ -52,3 +52,11 @@ margin: auto;
 max-width: 300px;
 margin: auto;
    }
+
+   .btn-padded {
+    margin-left: 15px;
+   }
+
+   .bottom-space {
+    margin-bottom: 15px;
+   }

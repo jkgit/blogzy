@@ -46,25 +46,23 @@ export default class PostsList extends Component{
      const { postResults, currentIndex } = this.state;
 
      return (
-       <div className="col-md-6">
+       <div>
          {postResults.posts.length === 0 ?
-             <div className="col-md-6">
+             <div>
                There are no posts to show you
              </div> :
-           <ul className="list-group">
-           {postResults &&
-             postResults.posts.map((post, index) => (
-             <li
-               className="list-group-item"
-               key={index}
-             >
-              <Link to={`/show-post/${post.id}`} className="btn btn-primary">{post.title}</Link>
-              <div>{post.description}</div>
-              <div>{post.created_at}</div>
-              <div>{post.user.email}</div>
-             </li>
-             ))}
-           </ul>
+             <div class="container">
+             {postResults &&
+               postResults.posts.map((post, index) => (
+                <div class="row bottom-space">
+                  <div class=".col-md-8 text-left">
+                    <Link to={`/show-post/${post.id}`}>{post.title}</Link><br/>
+                    <div class="lead">{post.description}</div>
+                    <footer>{post.user.email} {post.created_at}</footer>
+                  </div>
+                </div>
+               ))}
+             </div>
          }
          {postResults.current_page > 0 &&
            <button onClick={this.previousPage}>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import './Login.css';
+import Header from './header.component';
 import PropTypes from 'prop-types';
 
 async function loginUser(credentials) {
@@ -61,29 +62,28 @@ export default function Login({ setToken }) {
   }
 
   return(
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Blogzy
-        </p>
-      </header>
+    <div class="App">
+      <Header/>
       {message &&
-        <p>{message}</p>
+        <p class="text-danger">{message}</p>
       }
-      <form>
+      <div>
         <label>
           <p>Email</p>
           <input type="text"  onChange={e => setEmail(e.target.value)}/>
         </label>
+      </div>
+      <div>
         <label>
           <p>Password</p>
           <input type="password"  onChange={e => setPassword(e.target.value)}/>
         </label>
-        <div>
-          <button onClick={handleSubmit}>Submit</button>
-          <button onClick={handleRegister}>Register</button>
-        </div>
-      </form>
+      </div>
+      <br/>
+      <div>
+        <button onClick={handleSubmit} class="btn btn-primary">Login</button>
+        <button onClick={handleRegister} class="btn btn-default">Register</button>
+      </div>
     </div>
   )
 }

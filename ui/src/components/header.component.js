@@ -20,23 +20,26 @@ export default function Header({ token, setToken }) {
   }
 
   return (
-    <header className="App-header">
-      <p>
-        Blogzy
-        { token &&
-          <div>
-            <button className="nav-link" onClick={addPost}>
-              Add Post
-            </button>
-            <button className="nav-link" onClick={viewPosts}>
-              View Posts
-            </button>
-            <button className="nav-link" onClick={logout}>
-              Logout
-            </button>
-          </div>
-        }
-      </p>
-    </header>
+    <div>
+      <header className="App-header">
+        <p>
+          Blogzy
+          { token &&
+            <div>
+              <button class="btn btn-primary btn-xs" onClick={addPost}>
+                Add Post
+              </button>
+              <button class="btn btn-primary btn-xs btn-padded" onClick={viewPosts}>
+                View Posts
+              </button>
+              <button class="btn btn-primary btn-xs btn-padded" onClick={logout}>
+                Logout
+              </button>
+            </div>
+          }
+        </p>
+      </header>
+      <br/>
+    </div>
   );
 }

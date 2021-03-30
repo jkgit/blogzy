@@ -81,7 +81,7 @@ export default class PostsAdd extends Component {
      return (
        <div className="submit-form">
        {this.state.message &&
-         <p>{this.state.message}</p>
+         <p class="text-danger">{this.state.message}</p>
        }
        {this.state.submitted ? (
          <div>

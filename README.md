@@ -23,16 +23,16 @@ This challenge was implemented using Docker for the Rails && PostgreSQL backend 
 To install the backend, git clone the repo, cd into the repo, and execute the following :
 
 ~~~
-> docker-compose -f docker-compose-dev.yml build
-> docker-compose -f docker-compose-dev.yml run --rm web bundle exec web rake db:refresh
+> docker-compose -f docker-compose.yml build
+> docker-compose -f docker-compose.yml run --rm web bundle exec web rake db:refresh
 > docker-compose up
 ~~~
 
 optionally run tests
 
 ~~~
-> docker-compose -f docker-compose-dev.yml run --rm web bundle exec rake test:models
-> docker-compose -f docker-compose-dev.yml run --rm web bundle exec rake test:controllers
+> docker-compose -f docker-compose.yml run --rm web bundle exec rake test:models
+> docker-compose -f docker-compose.yml run --rm web bundle exec rake test:controllers
 ~~~
 
 At this point, you should be able to execute

@@ -20,5 +20,22 @@ You should be required to sign up for an account in order to create a post. For 
 
 This challenge was implemented using Docker for the Rails && PostgreSQL backend plus a React front-end.
 
-To install the backend, execute the following :
+To install the backend, git clone the repo, cd into the repo, and execute the following :
+
+> docker-compose -f docker-compose-dev.yml build
+> docker-compose -f docker-compose-dev.yml run --rm web bundle exec web rake db:refresh
+> docker-compose up
+
+At this point, you should be able to execute
+
+> curl "http://localhost:3001/posts"
+
+and receive an empty response.
+
+Now install the front-end by cd'ing into the ui folder of the blogzy repo and execute :
+
+> npm build
+> yarn start
+
+Yarn should start a new browser window with the Blogzy application running in it.  The React app uses port 3000 and the rails app uses 3001.
 

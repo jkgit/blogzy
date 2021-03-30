@@ -20,6 +20,14 @@ You should be required to sign up for an account in order to create a post. For 
 
 This challenge was implemented using Docker for the Rails && PostgreSQL backend plus a React front-end.
 
+Before attempting the installation below be sure that you have upgraded your version of docker-compose and/or Docker Desktop. I built the app using the following version :
+
+~~~
+docker-compose version 1.28.5, build c4eb3a1f
+~~~
+
+You may be able to build on other versions of docker but maybe not.
+
 To install the backend, git clone the repo, cd into the repo, and execute the following :
 
 ~~~

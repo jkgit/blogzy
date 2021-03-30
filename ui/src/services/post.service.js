@@ -1,7 +1,9 @@
 import http from "./http-common";
 class PostService {
-  getAll() {
-     return http.get("/posts");
+  getAll(page) {
+     if (!page)
+      page = 0;
+     return http.get("/posts?p="+page);
      }
   get(id) {
      return http.get(`/posts/${id}`);
@@ -17,3 +19,8 @@ class PostService {
      }
 }
 export default new PostService();
+
+http.interceptors.request.use(config => {
+  config.headers.common['Authorization'] = localStorage.getItem("token");
+  return config;
+});

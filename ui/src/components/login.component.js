@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';
+import { Redirect } from 'react-router-dom';
 import './Login.css';
 import PropTypes from 'prop-types';
 
@@ -28,6 +28,7 @@ async function registerUser(credentials) {
 export default function Login({ setToken }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [message, setMessage] = useState();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -38,10 +39,11 @@ export default function Login({ setToken }) {
 
     if (token.token) {
       localStorage.setItem("token", token.token);
-      setToken(token);
+      localStorage.setItem("email", email);
+      setToken(token.token);
     }
     else {
-      alert("Invalid login, please try again")
+      setMessage("Invalid login, please try again");
     }
   }
 
@@ -53,9 +55,9 @@ export default function Login({ setToken }) {
     });
 
     if (token.id)
-      alert("Registered successfully, please login");
+      setMessage("Registered successfully, please login");
     else
-      alert("Unable to register, please try again")
+      setMessage("Unable to register, please try again");
   }
 
   return(
@@ -65,7 +67,9 @@ export default function Login({ setToken }) {
           Blogzy
         </p>
       </header>
-      <h1>Please Log In</h1>
+      {message &&
+        <p>{message}</p>
+      }
       <form>
         <label>
           <p>Email</p>

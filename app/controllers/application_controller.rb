@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     begin
       email = JwtService.new(auth_header).check
       @current_user = User.find_by_email(email)
+      response.set_header('User-ID', @current_user.id)
     rescue ActiveRecord::RecordNotFound => e
       render json: {}, status: :unauthorized
     rescue JWT::DecodeError => e

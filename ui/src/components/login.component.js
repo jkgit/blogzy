@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './App.css';
+import { Redirect } from 'react-router-dom';
 import './Login.css';
+import Header from './header.component';
 import PropTypes from 'prop-types';
 
 async function loginUser(credentials) {
@@ -28,6 +29,7 @@ async function registerUser(credentials) {
 export default function Login({ setToken }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [message, setMessage] = useState();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -38,10 +40,11 @@ export default function Login({ setToken }) {
 
     if (token.token) {
       localStorage.setItem("token", token.token);
-      setToken(token);
+      localStorage.setItem("email", email);
+      setToken(token.token);
     }
     else {
-      alert("Invalid login, please try again")
+      setMessage("Invalid login, please try again");
     }
   }
 
@@ -53,33 +56,34 @@ export default function Login({ setToken }) {
     });
 
     if (token.id)
-      alert("Registered successfully, please login");
+      setMessage("Registered successfully, please login");
     else
-      alert("Unable to register, please try again")
+      setMessage("Unable to register, please try again");
   }
 
   return(
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Blogzy
-        </p>
-      </header>
-      <h1>Please Log In</h1>
-      <form>
+    <div class="App">
+      <Header/>
+      {message &&
+        <p class="text-danger">{message}</p>
+      }
+      <div>
         <label>
           <p>Email</p>
           <input type="text"  onChange={e => setEmail(e.target.value)}/>
         </label>
+      </div>
+      <div>
         <label>
           <p>Password</p>
           <input type="password"  onChange={e => setPassword(e.target.value)}/>
         </label>
-        <div>
-          <button onClick={handleSubmit}>Submit</button>
-          <button onClick={handleRegister}>Register</button>
-        </div>
-      </form>
+      </div>
+      <br/>
+      <div>
+        <button onClick={handleSubmit} class="btn btn-primary">Login</button>
+        <button onClick={handleRegister} class="btn btn-default">Register</button>
+      </div>
     </div>
   )
 }
